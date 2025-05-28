@@ -13,5 +13,5 @@ match operation:
         result = "Cannot divide by zero"
     case "/":
         result = num1/num2
-print(f"The reult is {result}")
+print(f"The result is {result}")
     
