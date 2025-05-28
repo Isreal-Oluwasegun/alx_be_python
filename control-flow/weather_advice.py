@@ -1,4 +1,3 @@
-options = ("sunny", "rainy", "cold")
 user_input = innput("What's the weather like today? (sunny/rainy/cold): ")
 if user_input == "sunny":
     print("Wear a t-shirt and sunglasses.")
