@@ -13,7 +13,7 @@ class BankAccount:
         return False
         
     def display_balance(self):
-        print("Current Balance: {self.__account_balance}")
+        print(f"Current Balance: \N{DOLLAR SIGN}{self.__account_balance}")
         
 
                 
