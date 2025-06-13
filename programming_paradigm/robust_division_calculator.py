@@ -13,3 +13,4 @@ def safe_divide(numerator, denominator):
         return f"Unexpected error: {str(e)}"
     else:
         return f"The result of the division is {result}"
+safe_divide(12,6,7)
