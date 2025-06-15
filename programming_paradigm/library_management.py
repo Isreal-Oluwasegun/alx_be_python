@@ -21,6 +21,6 @@ class Library(Book):
         return self._is_checked_out
 
     def return_book(self, title):
-        if self._is_checked_out = True:
+        if self._is_checked_out == True:
             self._books.append(title)
             self._is_checked_out = False
