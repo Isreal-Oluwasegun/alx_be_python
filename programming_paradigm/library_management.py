@@ -1,10 +1,17 @@
-# library_management.py
-
 class Book:
     def __init__(self, title, author):
         self.title = title
         self.author = author
         self._is_checked_out = False
+
+    def check_out(self):
+        self._is_checked_out = True
+
+    def return_book(self):
+        self._is_checked_out = False
+
+    def is_available(self):
+        return not self._is_checked_out
 
 
 class Library:
@@ -16,22 +23,33 @@ class Library:
 
     def check_out_book(self, title):
         for book in self._books:
-            if book.title == title and not book._is_checked_out:
-                book._is_checked_out = True
+            if book.title == title and book.is_available():
+                book.check_out()
+                print(f"Checked out '{title}'.")
                 return
         print(f"'{title}' is not available for checkout.")
 
     def return_book(self, title):
         for book in self._books:
-            if book.title == title and book._is_checked_out:
-                book._is_checked_out = False
+            if book.title == title and not book.is_available():
+                book.return_book()
+                print(f"Returned '{title}'.")
                 return
         print(f"'{title}' cannot be returned (not found or already available).")
 
     def list_available_books(self):
-        available = [f"{book.title} by {book.author}" for book in self._books if not book._is_checked_out]
-        if not available:
-            print("No books are currently available.")
+        available_books = [book for book in self._books if book.is_available()]
+        if not available_books:
+            print("No books available.")
         else:
-            for book in available:
-                print(book)
+            for book in available_books:
+                print(f"{book.title} by {book.author}")
+
+
+# Example usage
+library = Library()
+library.add_book(Book("Brave New World", "Aldous Huxley"))
+library.add_book(Book("1984", "George Orwell"))
+
+print("Available books:")
+library.list_available_books()
